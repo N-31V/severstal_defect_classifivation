@@ -3,3 +3,4 @@
 py/scripts/__pycache__/
 
 /data/images
+/checkpoints/

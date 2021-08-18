@@ -60,11 +60,11 @@ class ModelToolkit:
             'best_loss': self.best_loss,
             'losses': self.losses,
             'accuracy': self.accuracy
-        }, '~/workspace/steel_defect_recognition/checkpoints/{}'.format(file_name))
+        }, 'checkpoints/{}'.format(file_name))
         print('saving model with name: "{}"'.format(file_name))
 
     def load_model(self, file_name):
-        checkpoint = torch.load('~/workspace/steel_defect_recognition/checkpoints/{}'.format(file_name))
+        checkpoint = torch.load(file_name)
         self.epoch = checkpoint['epoch']
         self.model.load_state_dict(checkpoint['model_state_dict'])
         self.optimizer.load_state_dict(checkpoint['optimazer_state_dict'])
