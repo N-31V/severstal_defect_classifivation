@@ -113,9 +113,8 @@ class ModelToolkit:
                 self.optimizer.zero_grad()
             outputs = outputs.detach().cpu()
             running_loss += loss.item()
-            running_acc += (outputs.argmax(dim=1) == targets).float().mean()
-
-            tk0.set_postfix(loss=(running_loss / (itr + 1)))
+            running_acc += (outputs.argmax(dim=1) == targets).float().mean().item()
+            tk0.set_postfix({'loss': (running_loss / (itr + 1)), 'acc':  (running_acc / (itr + 1))})
         epoch_loss = running_loss / total_batches
         '''logging the metrics at the end of an epoch'''
         self.losses[phase].append(epoch_loss)
