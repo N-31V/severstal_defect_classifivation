@@ -118,7 +118,7 @@ class ModelToolkit:
         epoch_loss = running_loss / total_batches
         '''logging the metrics at the end of an epoch'''
         self.losses[phase].append(epoch_loss)
-        self.accuracy[phase] = running_acc / total_batches
+        self.accuracy[phase].append(running_acc / total_batches)
         torch.cuda.empty_cache()
         return epoch_loss
 
